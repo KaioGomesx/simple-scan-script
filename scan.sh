@@ -14,6 +14,6 @@ info "Start scan of domain $domain"
 
 host -t txt $domain | grep -o '~all' > /dev/null && info "Email spoofing using $domain domain"
 
-subfinder -d "$domain" -silent | httpx -silent | nuclei -c 50 -t vulnerabilities -t cves -t exposures -t takeovers -t misconfiguration -t default-logins -silent | notify -silent
+subfinder -d "$domain" -silent | httpx -silent | nuclei -c 50 -t cnvd -t vulnerabilities -t cves -t exposures -t takeovers -t misconfiguration -t default-logins -silent | notify -silent
 
 info "Finished scan of domain $domain"
